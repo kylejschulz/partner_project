@@ -1,0 +1,11 @@
+<form action="/tenants/<%= @tenant.id  %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH" />
+  <p>Enter new tenant info:</p>
+  <input type='text' name='tenant[name]' value="<%= @tenant.name %>"/>Name<br/>
+  <input type='number' name='tenant[age]' value="<%= @tenant.age %>"/>Age<br/>
+  <input type='number' name='tenant[units]' value="<%= @tenant.units %>"/>num of units</input><br/>
+  <input type='submit'/>
+</form>
+
+<h1><a href="/tenants"> Cancel and return to tenants</a></h1>

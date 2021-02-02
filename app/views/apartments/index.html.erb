@@ -1,0 +1,16 @@
+<h1>Apartments</h1>
+<h2><a href='/apartments/new'>New Apartment</a></h2>
+
+<% @apartments.each do |apartment| %>
+  <h3><a href="/apartments/<%= apartment.id %>"><%= apartment.name %></a></h3>
+  <p><%= apartment.age %></p>
+  <p><%= apartment.units %></p>
+  <a href="/apartments/<%= apartment.id  %>/edit">Edit</a>
+  <form action="/apartments/<%= apartment.id %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete"/>
+  </form>
+  <br>
+  <br>
+<% end %>

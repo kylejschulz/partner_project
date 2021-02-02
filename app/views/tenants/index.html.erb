@@ -1,0 +1,16 @@
+<h1>Tenants</h1>
+<h2><a href='/tenants/new'>New tenant</a></h2>
+
+<% @tenants.each do |tenant| %>
+  <h3><a href="/tenants/<%= tenant.id %>"><%= tenant.name %></a></h3>
+  <p><%= tenant.age %></p>
+  <p><%= tenant.units %></p>
+  <a href="/tenants/<%= tenant.id  %>/edit">Edit</a>
+  <form action="/tenants/<%= tenant.id %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="delete"/>
+  </form>
+  <br>
+  <br>
+<% end %>

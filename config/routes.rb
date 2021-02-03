@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   get '/', to: 'climbing_gym#index'
   get '/locations', to: 'locations#index'
   get '/locations/new', to: 'locations#new'
-  get '/locations', to: 'locations#create'
+  post '/locations', to: 'locations#create'
+  get '/locations/:id', to: "locations#show"
 end

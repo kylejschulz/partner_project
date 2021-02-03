@@ -12,13 +12,13 @@ class ApartmentsController < ApplicationController
   end
 
   def create
-    @apartment = Apartment.new({
+    apartment = Apartment.new({
       name: params[:apartment][:name],
-      age: params[:apartment][:age],
+      years_old: params[:apartment][:years_old],
       units: params[:apartment][:units]
                     })
 
-      @apartment.save
+      apartment.save
       redirect_to '/apartments'
   end
 
@@ -27,13 +27,13 @@ class ApartmentsController < ApplicationController
   end
 
   def update
-    apartment = Apartment.find(params[:id])
-    apartment.update({
+    @apartment = Apartment.find(params[:id])
+    @apartment.update({
       name: params[:apartment][:name],
-      age: params[:apartment][:age],
+      years_old: params[:apartment][:years_old],
       units: params[:apartment][:units]
       })
-    apartment.save
+    @apartment.save
     redirect_to '/apartments'
   end
 

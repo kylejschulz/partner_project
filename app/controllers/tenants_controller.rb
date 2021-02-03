@@ -16,7 +16,7 @@ class TenantsController < ApplicationController
     @tenant = Tenant.new({
       name: params[:tenant][:name],
       age: params[:tenant][:age],
-      units: params[:tenant][:units]
+      apartment_id: params[:tenant][:apartment_id]
                     })
 
       @tenant.save
@@ -32,7 +32,7 @@ class TenantsController < ApplicationController
     tenant.update({
       name: params[:tenant][:name],
       age: params[:tenant][:age],
-      units: params[:tenant][:units]
+      apartment_id: params[:tenant][:apartment_id]
       })
     tenant.save
     redirect_to '/tenants'

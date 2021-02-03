@@ -1,0 +1,7 @@
+<form action="/locations" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Enter new location:</p>
+  <input type='text' name='location[name]'/><br>
+  <textarea name='location[square_footage]'></textarea><br/>
+  <input type='submit'/>
+</form>

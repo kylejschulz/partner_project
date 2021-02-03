@@ -1,0 +1,26 @@
+
+<h1> Apartment name: <%= @apartment.name %> </h1><br>
+<h2>Apartment age: <%= @apartment.years_old %></h2><br>
+<h2>Number of units: <%= @apartment.units %></h2><br>
+
+<h3>Tenants</h3>
+<% @apartment.tenant.each do |tenant| %>
+<h1><a href="/tenants/<%= tenant.id %>"> <%= tenant.name %></a></h1>
+
+<% end  %>
+<br>
+
+
+
+
+
+
+<h1><a href="/apartments"> Apartments listing</a></h1>
+
+
+<form action="/apartments/<%= @apartment.id %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <a href="/apartments/<%= @apartment.id %>/edit">Update apartment</a>
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="delete"/>
+</form>

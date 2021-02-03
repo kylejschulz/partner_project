@@ -15,6 +15,15 @@ ActiveRecord::Schema.define(version: 2021_02_03_201832) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "apartments", force: :cascade do |t|
+    t.string "name"
+    t.integer "years_old"
+    t.integer "units"
+    t.boolean "luxury"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "city"
     t.integer "square_footage"
@@ -23,4 +32,15 @@ ActiveRecord::Schema.define(version: 2021_02_03_201832) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tenants", force: :cascade do |t|
+    t.bigint "apartment_id"
+    t.string "name"
+    t.integer "age"
+    t.boolean "on_strike"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["apartment_id"], name: "index_tenants_on_apartment_id"
+  end
+
+  add_foreign_key "tenants", "apartments"
 end

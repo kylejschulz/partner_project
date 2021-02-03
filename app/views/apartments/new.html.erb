@@ -1,0 +1,12 @@
+<form action="/apartments" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Enter new apartment info:</p>
+  <input type='text' name='apartment[name]'/>name<br/>
+  <input type='number' name='apartment[years_old]'>Years old</input><br/>
+  <input type='number' name='apartment[units]'>num of units</input><br/>
+  <input type='checkbox' name='apartment[luxury?]'>luxury?</input><br/>
+  <input type='submit'/>
+</form>
+<br>
+
+<h3><a href="/apartments"> Cancel and return to Apartments</a></h3>

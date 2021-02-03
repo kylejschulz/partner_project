@@ -1,9 +1,16 @@
 
-<h2> Apartment name: <%= @apartment.name %> </h2><br>
+<h1> Apartment name: <%= @apartment.name %> </h1><br>
 <h2>Apartment age: <%= @apartment.years_old %></h2><br>
 <h2>Number of units: <%= @apartment.units %></h2><br>
-<h2>created at: <%= @apartment.created_at %></h2><br>
-<h2>updated at: <%= @apartment.updated_at %></h2><br>
+
+<h3>Tenants</h3>
+<% @apartment.tenant.each do |tenant| %>
+<h1><a href="/tenants/<%= tenant.id %>"> <%= tenant.name %></a></h1>
+
+<% end  %>
+<br>
+
+
 
 
 

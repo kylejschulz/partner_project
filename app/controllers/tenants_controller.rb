@@ -8,7 +8,6 @@ class TenantsController < ApplicationController
   end
 
   def show
-    require "pry"; binding.pry
     @tenant = Tenant.find(params[:id])
   end
 

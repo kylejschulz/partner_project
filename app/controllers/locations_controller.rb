@@ -9,8 +9,9 @@ class LocationsController < ApplicationController
 
   def create
     location = Location.new({
-      name: params[:location][:name],
-      square_footage: params[:location][:square_footage]
+      city: params[:location][:city],
+      square_footage: params[:location][:square_footage],
+      lead_wall: params[:location][:lead_wall]
       })
     location.save
     redirect_to '/locations'

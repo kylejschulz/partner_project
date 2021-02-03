@@ -1,5 +1,6 @@
 <a href="/locations">Gyms Index</a>
 
-<h1><%= @location.name %></h1>
-
+<h1><%= @location.city %></h1>
 <p><%= @location.square_footage %></p>
+
+<a href="/locations/<%= @location.id %>/edit">Edit Location</a>

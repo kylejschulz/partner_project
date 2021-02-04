@@ -33,12 +33,13 @@ class TenantsController < ApplicationController
       age: params[:tenant][:age],
       apartment_id: params[:tenant][:apartment_id]
       })
+      # require "pry"; binding.pry
     tenant.save
     redirect_to '/tenants'
   end
 
   def destroy
-    tenant.destroy(params[:id])
+    Tenant.destroy(params[:id])
     redirect_to '/tenants'
   end
 end

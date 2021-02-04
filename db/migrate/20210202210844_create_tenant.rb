@@ -5,7 +5,7 @@ class CreateTenant < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :age
       t.string :apartment_building
-      t.boolean :on_strike
+      t.boolean :on_strike, :default => false
       t.timestamps
     end
   end

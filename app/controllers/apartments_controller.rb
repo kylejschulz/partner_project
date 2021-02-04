@@ -16,6 +16,8 @@ class ApartmentsController < ApplicationController
       name: params[:apartment][:name],
       years_old: params[:apartment][:years_old],
       units: params[:apartment][:units]
+      #if params[:apartment][:luxury] = 'off'
+
                     })
 
       apartment.save

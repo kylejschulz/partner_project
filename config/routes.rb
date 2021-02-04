@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get '/apartments/new', to: 'apartments#new'
   post '/apartments', to: 'apartments#create'
   get '/apartments/:id', to: 'apartments#show'
+
+  get '/apartments/:id/tenants', to: 'apartment_tenants#index'
+  get '/apartments/:id/tenants/new', to: 'apartment_tenants#new'
+
   get '/apartments/:id/edit', to: 'apartments#edit'
   patch '/apartments/:id', to: 'apartments#update'
   delete '/apartments/:id', to: 'apartments#destroy'

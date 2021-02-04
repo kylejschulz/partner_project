@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_02_03_201832) do
     t.bigint "apartment_id"
     t.string "name"
     t.integer "age"
+    t.string "apartment_building"
     t.boolean "on_strike"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

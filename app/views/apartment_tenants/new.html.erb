@@ -1,0 +1,13 @@
+<form action="/tenants" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Enter new tenant info:</p>
+  <input type='text' name='tenant[name]'/>name<br/>
+  <input type='number' name='tenant[age]'>age</input><br/>
+  <input type='text' name='tenant[apartment_id]' value='<%= @apartment.id %>'>apartment building ID</input><br/>
+  <input type='checkbox' name='tenant[on_strike]'>on_strike?</input><br/>
+  <input type='submit' value='Create new tenant'/>
+</form>
+<br>
+
+<input type='submit' value="Cancel and return to <%= @apartment.name %>'s tenants"/><a href="/apartments/<%= @apartment.id %>/tenants"> Cancel and return to <%= @apartment.name %> tenants</a>
+<h3><a href="/tenants"> Cancel and return to tenants</a></h3>

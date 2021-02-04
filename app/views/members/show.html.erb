@@ -1,0 +1,14 @@
+<a href="/members">Members Index</a>
+
+<h1><%= @member.primary_member %></h1>
+
+<a href="/members/<%= @member.id %>/edit">Edit Member</a>
+
+
+<h1>All Climbing Gym Members</h1>
+
+  <form action="/members/<%= @member.id %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete"/>
+  </form>

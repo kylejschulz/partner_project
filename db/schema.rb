@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_03_201832) do
+ActiveRecord::Schema.define(version: 2021_02_04_221134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,15 +32,29 @@ ActiveRecord::Schema.define(version: 2021_02_03_201832) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "members", force: :cascade do |t|
+    t.integer "climbing_gym_id"
+    t.string "primary_member"
+    t.boolean "monthly_membership"
+    t.boolean "yearly_membership"
+    t.integer "people_in_membership"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_members_on_location_id"
+  end
+
   create_table "tenants", force: :cascade do |t|
     t.bigint "apartment_id"
     t.string "name"
     t.integer "age"
+    t.string "apartment_building"
     t.boolean "on_strike"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["apartment_id"], name: "index_tenants_on_apartment_id"
   end
 
+  add_foreign_key "members", "locations"
   add_foreign_key "tenants", "apartments"
 end

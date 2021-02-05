@@ -19,11 +19,19 @@ Rails.application.routes.draw do
   patch '/tenants/:id', to: 'tenants#update'
   delete '/tenants/:id', to: 'tenants#destroy'
 
-
-
   get '/locations', to: 'locations#index'
   get '/locations/new', to: 'locations#new'
   post '/locations', to: 'locations#create'
-  get '/locations/:id', to: "locations#show"
+  get '/locations/:id', to: 'locations#show'
+  get '/locations/:id/edit', to: 'locations#edit'
+  patch '/locations/:id', to: 'locations#update'
+  delete '/locations/:id', to: 'locations#destroy'
 
+  get '/members', to: 'members#index'
+  get '/members/new', to: 'members#new'
+  post '/members', to: 'members#create'
+  get '/members/:id', to: 'members#show'
+  get '/members/:id/edit', to: 'members#edit'
+  patch '/members/:id', to: 'members#update'
+  delete '/members/:id', to: 'members#destroy'
 end

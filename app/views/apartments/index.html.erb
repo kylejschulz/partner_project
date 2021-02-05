@@ -7,5 +7,11 @@
 
 
 <% @apartments.each do |apartment| %>
-  <h3><a href="/apartments/<%= apartment.id %>"><%= apartment.name %></a></h3>
+  <h3><a href="/apartments/<%= apartment.id %>"><%= apartment.name %></a></h3> <h6><a href="/apartments/<%= apartment.id %>/edit">Edit</h6>
+    <form action="/apartments/<%= apartment.id %>" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="delete"/>
+    </form>
+  <br>
 <% end %>

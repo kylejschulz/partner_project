@@ -1,11 +1,12 @@
 <form action="/tenants/<%= @tenant.id  %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="PATCH" />
-  <p>Enter new tenant info:</p>
+  <p>Enter updated tenant info:</p>
   <input type='text' name='tenant[name]' value="<%= @tenant.name %>"/>Name<br/>
   <input type='number' name='tenant[age]' value="<%= @tenant.age %>"/>Age<br/>
-  <input type='number' name='tenant[units]' value="<%= @tenant.units %>"/>num of units</input><br/>
-  <input type='submit'/>
+  <input type='number' name='tenant[apartment_id]' value="<%= @tenant.apartment_id %>"/>Apartment building ID<br/>
+  <input type='checkbox' name='tenant[on_strike]'>on_strike?</input><br/>
+  <input type='submit' value='update'/>
 </form>
 
 <h1><a href="/tenants"> Cancel and return to tenants</a></h1>

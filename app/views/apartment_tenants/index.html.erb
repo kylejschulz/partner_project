@@ -1,16 +1,22 @@
-<h1>Tenants</h1>
+<% flash.each do |name, msg| %>
+  <h2><%= msg %></h2>
+<% end %>
+<h1><%= @apartment.name %>'s Tenants</h1>
 <h3><a href="/"> Return to Welcome page</a></h3>
 
-<h2><a href='/tenants/new'>New tenant</a></h2>
 
 <% @tenants.each do |tenant| %>
   <h3><a href="/tenants/<%= tenant.id %>"><%= tenant.name %></a></h3>
+  <p>Age: <%= tenant.age %></p>
   <h5><a href="/tenants/<%= tenant.id %>/edit">Edit tenant</a></h5>
+
   <form action="/tenants/<%= tenant.id %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="delete tenant"/>
   </form>
   <br>
-
+  <br>
 <% end %>
+
+<h3><a href="/apartments/<%= @apartment.id %>/tenants/new">Create tenant</a></h3>

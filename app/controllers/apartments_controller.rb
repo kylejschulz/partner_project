@@ -4,7 +4,7 @@ class ApartmentsController < ApplicationController
   end
 
   def new
-
+    @apartment = Apartment.new
   end
 
   def show
@@ -12,14 +12,23 @@ class ApartmentsController < ApplicationController
   end
 
   def create
-    apartment = Apartment.new({
+    if params[:apartment][:luxury] == 'on'
+      params[:apartment][:luxury] = true
+    else params[:apartment][:luxury].nil?
+      params[:apartment][:luxury] = false
+    end
+    @apartment = Apartment.new({
       name: params[:apartment][:name],
       years_old: params[:apartment][:years_old],
-      units: params[:apartment][:units]
+      units: params[:apartment][:units],
+      luxury: params[:apartment][:luxury]
                     })
 
-      apartment.save
-      redirect_to '/apartments'
+      if @apartment.save
+        redirect_to '/apartments'
+      else
+        render 'new'
+      end
   end
 
   def edit
@@ -28,11 +37,18 @@ class ApartmentsController < ApplicationController
 
   def update
     @apartment = Apartment.find(params[:id])
+    if params[:apartment][:luxury] == 'on'
+      params[:apartment][:luxury] = true
+    else params[:apartment][:luxury].nil?
+      params[:apartment][:luxury] = false
+    end
     @apartment.update({
       name: params[:apartment][:name],
       years_old: params[:apartment][:years_old],
-      units: params[:apartment][:units]
+      units: params[:apartment][:units],
+      luxury: params[:apartment][:luxury]
       })
+
     @apartment.save
     redirect_to '/apartments'
   end

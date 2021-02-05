@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/apartments/:id/tenants', to: 'apartment_tenants#index'
   get '/apartments/:id/tenants/new', to: 'apartment_tenants#new'
+  post '/apartments/:id/tenants', to: 'apartment_tenants#create'
 
   get '/apartments/:id/edit', to: 'apartments#edit'
   patch '/apartments/:id', to: 'apartments#update'

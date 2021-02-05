@@ -4,7 +4,7 @@ class CreateApartment < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :years_old
       t.integer :units
-      t.boolean :luxury, :default => false
+      t.boolean :luxury
       t.timestamps
     end
   end

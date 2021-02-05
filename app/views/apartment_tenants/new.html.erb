@@ -1,6 +1,17 @@
-<form action="/tenants" method="post">
+<p>Enter new tenant info:</p>
+
+<%  if @tenant.errors.any? %>
+  <h3> The following errors prevented the tenant from being saved</h3>
+  <ul>
+    <% @tenant.errors.full_messages.each do |message|  %>
+    <li><%= message %></li>
+    <% end  %>
+  </ul>
+<% end  %>
+
+
+<form action="/apartments/<%= @apartment.id %>/tenants" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <p>Enter new tenant info:</p>
   <input type='text' name='tenant[name]'/>name<br/>
   <input type='number' name='tenant[age]'>age</input><br/>
   <input type='text' name='tenant[apartment_id]' value='<%= @apartment.id %>'>apartment building ID</input><br/>

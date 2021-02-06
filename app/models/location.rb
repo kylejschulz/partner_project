@@ -1,5 +1,5 @@
 class Location < ApplicationRecord
-  has_many :members
+  has_many :member
 
   validates :city, presence: true, length: {minimum: 3, maximum: 50}
   validates :square_footage, presence: true, :numericality => { :greater_than_or_equal_to => 0 }

@@ -1,6 +1,6 @@
 <form action="/members" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <p>Enter new member:</p>
+  <h3>Enter new member:</h3>
   <input type='text' name='member[primary_member]'/>Member Name<br>
   <input type='checkbox' name='member[monthly_membership]'>Monthly Membership?</input><br>
   <input type='checkbox' name='member[yearly_membership]'></input>Yearly Membership?<br>
@@ -8,3 +8,6 @@
   <input type='number' name='member[location_id]'>Gym they belong to</input><br>
   <input type='submit'/>
 </form>
+
+<br>
+<a href="/members">Members Index</a>

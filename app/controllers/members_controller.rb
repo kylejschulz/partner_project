@@ -8,6 +8,16 @@ class MembersController < ApplicationController
   end
 
   def create
+    if params[:member][:monthly_membership] == 'on'
+      params[:member][:monthly_membership] = true
+    else params[:member][:monthly_membership].nil?
+      params[:member][:monthly_membership] = false
+    end
+    if params[:member][:yearly_membership] == 'on'
+      params[:member][:yearly_membership] = true
+    else params[:member][:yearly_membership].nil?
+      params[:member][:yearly_membership] = false
+    end
     member = Member.new({
       primary_member: params[:member][:primary_member],
       monthly_membership: params[:member][:monthly_membership],
@@ -28,6 +38,16 @@ class MembersController < ApplicationController
   end
 
   def update
+    if params[:member][:monthly_membership] == 'on'
+      params[:member][:monthly_membership] = true
+    else params[:member][:monthly_membership].nil?
+      params[:member][:monthly_membership] = false
+    end
+    if params[:member][:yearly_membership] == 'on'
+      params[:member][:yearly_membership] = true
+    else params[:member][:yearly_membership].nil?
+      params[:member][:yearly_membership] = false
+    end
     member = Member.find(params[:id])
     member.update({
       primary_member: params[:member][:primary_member],

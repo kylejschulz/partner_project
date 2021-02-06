@@ -1,7 +1,11 @@
 <h1>All Members</h1>
-<h3><a href="/"> Return to Welcome page</a></h3>
-<br><br>
 
 <% @members.each do |member| %>
   <h3><a href="/members/<%= member.id %>"><%= member.primary_member %></a></h3>
 <% end %>
+
+<br>
+<a href='/members/new'> Add new member </a>
+
+<br><br>
+<h3><a href="/"> Return to Welcome page</a></h3>

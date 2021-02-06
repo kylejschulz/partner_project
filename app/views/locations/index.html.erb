@@ -1,7 +1,9 @@
 <h1>All Locations</h1>
-<h3><a href="/"> Return to Welcome page</a></h3>
-<br><br>
 
 <% @locations.each do |location| %>
   <h3><a href="/locations/<%= location.id %>"><%= location.city %></a></h3>
 <% end %>
+
+<br><br>
+<a href='/locations/new'>New Location</a></li>
+<h3><a href="/"> Return to Welcome page</a></h3>

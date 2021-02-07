@@ -1,4 +1,4 @@
-<form action="/members" method="post">
+<form action="/locations/<%= @location.id %>/members" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <h3>Enter new member:</h3>
   <input type='text' name='member[primary_member]'/>Member Name<br>
@@ -9,4 +9,4 @@
 </form>
 
 <br>
-<a href="/members">Members Index</a>
+<a href="/locations/<%= @location.id %>/members">Members Index</a>

@@ -14,15 +14,9 @@ class MembersController < ApplicationController
     else params[:member][:monthly_membership].nil?
       params[:member][:monthly_membership] = false
     end
-    if params[:member][:yearly_membership] == 'on'
-      params[:member][:yearly_membership] = true
-    else params[:member][:yearly_membership].nil?
-      params[:member][:yearly_membership] = false
-    end
     member = Member.new({
       primary_member: params[:member][:primary_member],
       monthly_membership: params[:member][:monthly_membership],
-      yearly_membership: params[:member][:yearly_membership],
       people_in_membership: params[:member][:people_in_membership],
       location_id: params[:member][:location_id]
       })
@@ -44,16 +38,10 @@ class MembersController < ApplicationController
     else params[:member][:monthly_membership].nil?
       params[:member][:monthly_membership] = false
     end
-    if params[:member][:yearly_membership] == 'on'
-      params[:member][:yearly_membership] = true
-    else params[:member][:yearly_membership].nil?
-      params[:member][:yearly_membership] = false
-    end
     member = Member.find(params[:id])
     member.update({
       primary_member: params[:member][:primary_member],
       monthly_membership: params[:member][:monthly_membership],
-      yearly_membership: params[:member][:yearly_membership],
       people_in_membership: params[:member][:people_in_membership]
       })
       member.save

@@ -1,6 +1,7 @@
 <h1><%= @location.city %></h1>
 <p><%= @location.square_footage %> Square footage</p>
 <p>Does it have a lead wall? <%= @location.lead_wall %></p>
+<p>Number of members: <%= @location.member_count %></p>
 
 <a href="/locations/<%= @location.id %>/edit">Update Location</a>
 
@@ -9,6 +10,8 @@
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Location"/>
 </form>
+
+
 
 <br>
 <h3><a href="/locations/<%= @location.id%>/members"> <%= @location.city%>'s members</a></h3>

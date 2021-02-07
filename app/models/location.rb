@@ -4,4 +4,17 @@ class Location < ApplicationRecord
   validates :city, presence: true, length: {minimum: 3, maximum: 50}
   validates :square_footage, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
   validates_inclusion_of :lead_wall, :in => [true, false]
+
+  def self.sort
+    all.order(:created_at).reverse
+  end
+
+  def member_count
+    member.count
+  end
+
+  def sort_alpha
+    # require "pry";binding.pry
+    member.order(:primary_member)
+  end
 end

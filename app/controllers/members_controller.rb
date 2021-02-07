@@ -1,10 +1,11 @@
 class MembersController < ApplicationController
   def index
-    @members = Member.all
+    # require "pry";binding.pry
+    @members = Member.has_membership
   end
 
   def new
-
+    @member = Member.new
   end
 
   def create

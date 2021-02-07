@@ -28,10 +28,11 @@ Rails.application.routes.draw do
   get '/locations/new', to: 'locations#new'
   post '/locations', to: 'locations#create'
   get '/locations/:id', to: 'locations#show'
-  get '/locations/:id/members', to: 'location_members#index'
   get '/locations/:id/edit', to: 'locations#edit'
   patch '/locations/:id', to: 'locations#update'
   delete '/locations/:id', to: 'locations#destroy'
+  get '/locations/:id/members', to: 'location_members#index'
+  get '/locations/:id/members/new', to: 'location_members#new'
 
 
   get '/members', to: 'members#index'

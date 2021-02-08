@@ -44,7 +44,7 @@ class LocationsController < ApplicationController
       lead_wall: params[:location][:lead_wall]
       })
     @location.save
-    redirect_to "/locations/#{location.id}"
+    redirect_to "/locations/#{@location.id}"
   end
 
   def destroy

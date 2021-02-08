@@ -23,6 +23,6 @@ class LocationMembersController < ApplicationController
       location_id: params[:member][:location_id]
       })
     @member.save
-    redirect_to "/location/#{@location.id}/members"
+    redirect_to "/locations/#{@location.id}/members"
   end
 end

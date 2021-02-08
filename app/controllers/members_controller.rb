@@ -14,13 +14,13 @@ class MembersController < ApplicationController
     else params[:member][:monthly_membership].nil?
       params[:member][:monthly_membership] = false
     end
-    member = Member.new({
+    @member = Member.new({
       primary_member: params[:member][:primary_member],
       monthly_membership: params[:member][:monthly_membership],
       people_in_membership: params[:member][:people_in_membership],
       location_id: params[:member][:location_id]
       })
-    member.save
+    @member.save
     redirect_to '/members'
   end
 
@@ -38,14 +38,14 @@ class MembersController < ApplicationController
     else params[:member][:monthly_membership].nil?
       params[:member][:monthly_membership] = false
     end
-    member = Member.find(params[:id])
-    member.update({
+    @member = Member.find(params[:id])
+    @member.update({
       primary_member: params[:member][:primary_member],
       monthly_membership: params[:member][:monthly_membership],
       people_in_membership: params[:member][:people_in_membership]
       })
-      member.save
-      redirect_to "/members/#{member.id}"
+      @member.save
+      redirect_to "/members/#{@member.id}"
   end
 
   def destroy

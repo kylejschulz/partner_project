@@ -4,10 +4,16 @@
   <h3>Primary Member: <%= member.primary_member %></h3>
   <p>Monthly membership? <%= member.monthly_membership %></p>
   <p># of ppl in membership: <%= member.people_in_membership %></p>
+  <a href="/members/<%= member.id %>/edit">Update Member</a>
+  <form action="/members/<%= member.id %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete member"/><br>
+  </form>
 <% end %>
 
-<br>
+<br><br>
 <a href="/locations/<%= @location.id %>/members/new">Create member</a>
 
 <br><br>
-<a href="/locations">Gyms List</a>
+<a href="/locations">All Climbing Gyms</a>

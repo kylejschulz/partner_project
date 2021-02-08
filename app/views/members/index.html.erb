@@ -1,7 +1,13 @@
-<h1>All Members</h1>
+<h1><u>All Members</h1></u>
 
 <% @members.each do |member| %>
   <h3><a href="/members/<%= member.id %>"><%= member.primary_member %></a></h3>
+  <a href="/members/<%= member.id %>/edit">Update Member</a>
+  <form action="/members/<%= member.id %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete member"/><br>
+  </form>
 <% end %>
 
 <br>

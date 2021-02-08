@@ -1,12 +1,3 @@
-<!-- <form action="/locations" method="post">
-
-  <input type='text' name='location[city]'/>City Name<br>
-  <input type='number' name='location[square_footage]'>Gym square footage</input><br>
-  <input type='checkbox' name='location[lead_wall]'></input>Does it have a lead wall?<br>
-  <input type='submit' value='Create Location'/>
-</form> -->
-
-
 <form action="/locations" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type='text' name='location[city]'/>City Name<br/>

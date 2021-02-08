@@ -1,9 +1,12 @@
-<form action="/locations" method="post">
+
+<form action="/locations/<%= @location.id  %>"  method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type='text' name='location[city]'/>City Name<br/>
-  <input type='number' name='location[square_footage]'>Gym square footage<br/>
-  <input type='checkbox' name='location[lead_wall]'>Does it have a lead wall?<br/>
+  <input type="hidden" name="_method" value="PATCH" />
+  <h2>Edit Location Information</h2>
+  <input type='text' name='location[city]' value="<%= @location.city %>"/>Name of city<br>
+  <input type='number' name='location[square_footage]' value="<%= @location.square_footage %>"/>Gym's square footage</input><br>
+  <input type='checkbox' name='location[lead_wall]'>Does it have a lead wall?</input><br>
   <input type='submit'/>
 </form>
 
-<h1><a href="/locations">Return to All Locations</a></h1>
+<h3><a href="/locations">Return to All Locations</a></h3>

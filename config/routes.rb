@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   delete '/locations/:id', to: 'locations#destroy'
   get '/locations/:id/members', to: 'location_members#index'
   get '/locations/:id/members/new', to: 'location_members#new'
-  post '/location/:id/members', to: 'location_members#create'
+  post '/locations/:id/members', to: 'location_members#create'
 
 
   get '/members', to: 'members#index'

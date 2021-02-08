@@ -1,6 +1,10 @@
 class ApartmentsController < ApplicationController
+  before_action :set_apartment, only: [:show, :edit, :update, :destroy]
   def index
+    # @apartments = Apartment.all
     @apartments = Apartment.all
+
+
   end
 
   def new
@@ -8,7 +12,8 @@ class ApartmentsController < ApplicationController
   end
 
   def show
-    @apartment = Apartment.find(params[:id])
+    apa = Apartment.first
+    apa.other_method(params)
   end
 
   def create
@@ -17,44 +22,42 @@ class ApartmentsController < ApplicationController
     else params[:apartment][:luxury].nil?
       params[:apartment][:luxury] = false
     end
-    @apartment = Apartment.new({
-      name: params[:apartment][:name],
-      years_old: params[:apartment][:years_old],
-      units: params[:apartment][:units],
-      luxury: params[:apartment][:luxury]
-                    })
+    @apartment = Apartment.new(apartment_params)
 
-      if @apartment.save
-        redirect_to '/apartments'
-      else
-        render 'new'
-      end
+    if @apartment.save
+      redirect_to '/apartments'
+    else
+      render 'new'
+    end
   end
 
   def edit
-    @apartment = Apartment.find(params[:id])
   end
 
   def update
-    @apartment = Apartment.find(params[:id])
     if params[:apartment][:luxury] == 'on'
       params[:apartment][:luxury] = true
     else params[:apartment][:luxury].nil?
       params[:apartment][:luxury] = false
     end
-    @apartment.update({
-      name: params[:apartment][:name],
-      years_old: params[:apartment][:years_old],
-      units: params[:apartment][:units],
-      luxury: params[:apartment][:luxury]
-      })
+    @apartment.update(apartment_params)
 
     @apartment.save
     redirect_to '/apartments'
   end
 
   def destroy
-    Apartment.destroy(params[:id])
+    @apartment.destroy
     redirect_to '/apartments'
+  end
+
+  private
+
+  def apartment_params
+    params.require(:apartment).permit(:name, :years_old, :units, :luxury)
+  end
+
+  def set_apartment
+    @apartment = Apartment.find(params[:id])
   end
 end

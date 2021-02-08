@@ -2,7 +2,7 @@ class ApartmentsController < ApplicationController
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
   def index
     # @apartments = Apartment.all
-    @apartments = Apartment.sort
+    @apartments = Apartment.all
 
 
   end

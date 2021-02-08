@@ -48,6 +48,7 @@ class LocationsController < ApplicationController
   end
 
   def destroy
+    # require "pry";binding.pry
     Location.destroy(params[:id])
     redirect_to '/locations'
   end

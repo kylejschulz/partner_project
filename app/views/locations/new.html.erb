@@ -1,10 +1,10 @@
 <h5><a href="/locations">Return to All Locations</a></h5>
 <h5><a href="/members">Return to all members</a></h5>
 
-<form action="/locations" method="post">
+<form action="/locations" method="post" >
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type='text' name='location[city]'/>City Name<br/>
   <input type='number' name='location[square_footage]'>Gym square footage<br/>
   <input type='checkbox' name='location[lead_wall]'>Does it have a lead wall?<br/>
-  <input type='submit'/>
+  <input type='submit' value='Create Location'/>
 </form>

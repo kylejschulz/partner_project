@@ -19,8 +19,5 @@ RSpec.describe 'locations index page', type: :feature do
     # expect(page).to have_content(location_2.lead_wall)
   end
 
-  # it 'follow a link to ceate new location' do
-  #   visit '/locations'
-  #
-  #   expect(page).to have
+  
 end

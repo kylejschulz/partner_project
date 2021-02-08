@@ -19,5 +19,5 @@ RSpec.describe 'locations index page', type: :feature do
     # expect(page).to have_content(location_2.lead_wall)
   end
 
-  
+
 end

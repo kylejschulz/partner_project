@@ -1,3 +1,6 @@
+<h5><a href="/locations">Return to All Locations</a></h5>
+<h5><a href="/members">Return to all members</a></h5>
+
 <h2>Primary member: <%= @member.primary_member %></h2>
 <p>Monthly membership? <%= @member.monthly_membership %></p>
 <p># of ppl in membership: <%= @member.people_in_membership %></p>
@@ -12,6 +15,3 @@
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete member"/>
   </form>
-
-<br>
-<a href="/members">Return to all members</a>

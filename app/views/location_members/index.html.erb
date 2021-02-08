@@ -1,7 +1,8 @@
 <h1><%= @location.city%> Climbing Gym members</h1>
+<h5><a href="/locations">Return to All Locations</a></h5>
 
 <% @members.each do |member| %>
-  <h3>Primary Member: <%= member.primary_member %></h3>
+  <h2>Primary Member: <%= member.primary_member %></h2>
   <p>Monthly membership? <%= member.monthly_membership %></p>
   <p># of ppl in membership: <%= member.people_in_membership %></p>
   <a href="/members/<%= member.id %>/edit">Update Member</a>
@@ -15,5 +16,5 @@
 <br><br>
 <a href="/locations/<%= @location.id %>/members/new">Create member</a>
 
-<br><br>
-<a href="/locations">All Climbing Gyms</a>
+<br>
+<h5><a href="/"> Return to Welcome page</a></h5>

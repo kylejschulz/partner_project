@@ -5,4 +5,13 @@ class Apartment < ApplicationRecord
   validates_inclusion_of :luxury, :in => [true, false]
 
   has_many :tenant
+
+  def self.whatever
+    require "pry"; binding.pry
+  end
+
+  def other_method(params)
+    params[:id]
+    require "pry"; binding.pry
+  end
 end

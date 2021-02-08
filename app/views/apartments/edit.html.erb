@@ -4,9 +4,9 @@
   <p>Enter new apartment info:</p>
   <input type='text' name='apartment[name]' value="<%= @apartment.name %>"/>Name<br/>
   <input type='number' name='apartment[years_old]' value="<%= @apartment.years_old %>"/>Years old<br/>
-  <input type='number' name='apartment[units]' value="<%= @apartment.units %>"/>num of units</input><br/>
-  <input type='checkbox' name='apartment[luxury?]'>luxury?</input><br/>
-  <input type='submit'/>
+  <input type='number' name='apartment[units]' value="<%= @apartment.units %>"/>num of units<br/>
+  <input type='checkbox' name='apartment[luxury?]'>luxury?<br/>
+  <input type='submit' value ='Update Apartment'/>
 </form>
 
 <h1><a href="/apartments"> Cancel and return to Apartments</a></h1>

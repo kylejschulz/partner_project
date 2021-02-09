@@ -4,6 +4,9 @@ class Apartment < ApplicationRecord
   validates :units, :numericality => { :greater_than_or_equal_to => 0 }
   validates_inclusion_of :luxury, :in => [true, false]
 
+<<<<<<< HEAD
+  has_many :tenant, dependent: :destroy
+=======
   has_many :tenant
 
   def self.whatever
@@ -14,4 +17,5 @@ class Apartment < ApplicationRecord
     params[:id]
     # require "pry"; binding.pry
   end
+>>>>>>> main
 end

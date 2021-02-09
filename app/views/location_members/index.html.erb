@@ -1,9 +1,10 @@
-<h1>All Members</h1>
+<h1><%= @location.city%> Climbing Gym members</h1>
 <h5><a href="/locations">Return to All Locations</a></h5>
 
-<br>
 <% @members.each do |member| %>
-  <h2><a href="/members/<%= member.id %>"><%= member.primary_member %></a></h2>
+  <h2>Primary Member: <%= member.primary_member %></h2>
+  <p>Monthly membership? <%= member.monthly_membership %></p>
+  <p># of ppl in membership: <%= member.people_in_membership %></p>
   <a href="/members/<%= member.id %>/edit">Update Member</a>
   <form action="/members/<%= member.id %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -13,7 +14,7 @@
 <% end %>
 
 <br><br>
-<h3><a href='/members/new'>New member </a></h3>
+<a href="/locations/<%= @location.id %>/members/new">Create member</a>
 
 <br>
 <h5><a href="/"> Return to Welcome page</a></h5>

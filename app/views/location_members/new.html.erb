@@ -1,13 +1,15 @@
 <h5><a href="/locations">Return to All Locations</a></h5>
 <h5><a href="/members">Return to all members</a></h5>
 
-
-<form action="/members" method="post">
+<form action="/locations/<%= @location.id %>/members" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <h3>Enter new member:</h3>
   <input type='text' name='member[primary_member]'/>Member Name<br>
   <input type='checkbox' name='member[monthly_membership]'>Monthly Membership?</input><br>
   <input type='number' name='member[people_in_membership]'>Number of people in membership</input><br>
-  <input type='number' name='member[location_id]'>Gym they belong to</input><br>
+  <input type='number' name='member[location_id]' value="<%= @location.id %>">Gym they belong to</input><br>
   <input type='submit'/>
 </form>
+
+<br>
+<h4><a href="/locations/<%= @location.id %>/members"> <%= @location.city%>'s member Index</a></h4>

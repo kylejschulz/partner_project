@@ -1,21 +1,26 @@
 class MembersController < ApplicationController
   def index
-    @members = Member.all
+    # require "pry";binding.pry
+    @members = Member.has_membership
   end
 
   def new
-
+    @member = Member.new
   end
 
   def create
-    member = Member.new({
+    if params[:member][:monthly_membership] == 'on'
+      params[:member][:monthly_membership] = true
+    else params[:member][:monthly_membership].nil?
+      params[:member][:monthly_membership] = false
+    end
+    @member = Member.new({
       primary_member: params[:member][:primary_member],
       monthly_membership: params[:member][:monthly_membership],
-      yearly_membership: params[:member][:yearly_membership],
       people_in_membership: params[:member][:people_in_membership],
       location_id: params[:member][:location_id]
       })
-    member.save
+    @member.save
     redirect_to '/members'
   end
 
@@ -28,15 +33,19 @@ class MembersController < ApplicationController
   end
 
   def update
-    member = Member.find(params[:id])
-    member.update({
+    if params[:member][:monthly_membership] == 'on'
+      params[:member][:monthly_membership] = true
+    else params[:member][:monthly_membership].nil?
+      params[:member][:monthly_membership] = false
+    end
+    @member = Member.find(params[:id])
+    @member.update({
       primary_member: params[:member][:primary_member],
       monthly_membership: params[:member][:monthly_membership],
-      yearly_membership: params[:member][:yearly_membership],
       people_in_membership: params[:member][:people_in_membership]
       })
-      member.save
-      redirect_to "/members/#{member.id}"
+      @member.save
+      redirect_to "/members/#{@member.id}"
   end
 
   def destroy

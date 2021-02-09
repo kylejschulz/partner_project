@@ -1,15 +1,18 @@
-<a href="/locations">Gyms Index</a>
+<h5><a href="/locations">Return to All Locations</a></h5>
+<h5><a href="/members">Return to all members</a></h5>
 
 <h1><%= @location.city %></h1>
-<p><%= @location.square_footage %></p>
+<p><%= @location.square_footage %> Square footage</p>
+<p>Does it have a lead wall? <%= @location.lead_wall %></p>
+<p>Number of members: <%= @location.member_count %></p>
 
-<a href="/locations/<%= @location.id %>/edit">Edit Location</a>
+<a href="/locations/<%= @location.id %>/edit">Update Location</a>
 
+<form action="/locations/<%= @location.id %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Location"/>
+</form>
 
-<h1>All Climbing Gym Locations</h1>
-
-  <form action="/locations/<%= @location.id %>" method="POST">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete"/>
-  </form>
+<br>
+<h4><a href="/locations/<%= @location.id%>/members"> <%= @location.city%>'s members</a></h4>

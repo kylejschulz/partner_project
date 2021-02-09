@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2021_02_05_125629) do
     t.integer "climbing_gym_id"
     t.string "primary_member"
     t.boolean "monthly_membership"
-    t.boolean "yearly_membership"
     t.integer "people_in_membership"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

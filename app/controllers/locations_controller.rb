@@ -1,19 +1,24 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.all
+    @locations = Location.sort
   end
 
   def new
-
+    @location = Location.new
   end
 
   def create
-    location = Location.new({
+    if params[:location][:lead_wall] == 'on'
+      params[:location][:lead_wall] = true
+    else params[:location][:lead_wall].nil?
+      params[:location][:lead_wall] = false
+    end
+    @location = Location.new({
       city: params[:location][:city],
       square_footage: params[:location][:square_footage],
       lead_wall: params[:location][:lead_wall]
       })
-    location.save
+    @location.save
     redirect_to '/locations'
   end
 
@@ -21,22 +26,29 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
   end
 
+
   def edit
     @location = Location.find(params[:id])
   end
 
   def update
-    location = Location.find(params[:id])
-    location.update({
+    @location = Location.find(params[:id])
+    if params[:location][:lead_wall] == 'on'
+      params[:location][:lead_wall] = true
+    else params[:location][:lead_wall].nil?
+      params[:location][:lead_wall] = false
+    end
+    @location.update({
       city: params[:location][:city],
       square_footage: params[:location][:square_footage],
       lead_wall: params[:location][:lead_wall]
       })
-      location.save
-      redirect_to "/locations/#{location.id}"
+    @location.save
+    redirect_to "/locations/#{@location.id}"
   end
 
   def destroy
+    # require "pry";binding.pry
     Location.destroy(params[:id])
     redirect_to '/locations'
   end

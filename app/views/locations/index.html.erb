@@ -1,7 +1,19 @@
-<h1>All Locations</h1>
-<h3><a href="/"> Return to Welcome page</a></h3>
-<br><br>
+<h1>All Climbing Gym Locations</h1>
+<h5><a href="/members">Return to all members</a></h5>
 
+<br>
 <% @locations.each do |location| %>
-  <h3><a href="/locations/<%= location.id %>"><%= location.city %></a></h3>
+  <h2><a href="/locations/<%= location.id %>"><%= location.city %></a></h2>
+  <h5><a href="/locations/<%= location.id %>/edit">Update Location</a></h5>
+  <form action="/locations/<%= location.id %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Location"/>
+  </form><br>
 <% end %>
+
+<br><br>
+<h3><a href='/locations/new'>New Location</a></h3>
+
+<br>
+<h5><a href="/"> Return to Welcome page</a></h5>

@@ -1,14 +1,17 @@
-<a href="/members">Members Index</a>
+<h5><a href="/locations">Return to All Locations</a></h5>
+<h5><a href="/members">Return to all members</a></h5>
 
-<h1><%= @member.primary_member %></h1>
+<h2>Primary member: <%= @member.primary_member %></h2>
+<p>Monthly membership? <%= @member.monthly_membership %></p>
+<p># of ppl in membership: <%= @member.people_in_membership %></p>
 
-<a href="/members/<%= @member.id %>/edit">Edit Member</a>
+
+<a href="/members/<%= @member.id %>/edit">Update Member</a>
 
 
-<h1>All Climbing Gym Members</h1>
 
   <form action="/members/<%= @member.id %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete"/>
+    <input type="submit" value="Delete member"/>
   </form>

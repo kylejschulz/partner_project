@@ -1,6 +1,16 @@
 <h1><%= @location.city%> Climbing Gym members</h1>
 <h5><a href="/locations">Return to All Locations</a></h5>
 
+<%= form_with url: "/locations/#{@location.id}/members", method: :get, local: true do |form| %>
+  <%= form.label :Only_return_records_with_more_than  %>
+  <%= form.number_field :number_of_people_in_membership %>
+  <%= form.submit 'Submit' %>
+<% end %>
+
+<%= link_to 'alphabetize', "/locations/#{@location.id}/members?sort_param=alphabetize" %>
+
+<%= link_to 'clear filter', "/locations/#{@location.id}/members" %>
+
 <% @members.each do |member| %>
   <h2>Primary Member: <%= member.primary_member %></h2>
   <p>Monthly membership? <%= member.monthly_membership %></p>
@@ -12,6 +22,8 @@
     <input type="submit" value="Delete member"/><br>
   </form>
 <% end %>
+
+
 
 <br><br>
 <a href="/locations/<%= @location.id %>/members/new">Create member</a>

@@ -1,10 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'locations show page', type: :feature do
-  it 'follow a link to create new location' do
-    visit '/locations'
 
-    expect(page).to_not have_content("Salt Lake City")
 
     click_link 'New Location'
 

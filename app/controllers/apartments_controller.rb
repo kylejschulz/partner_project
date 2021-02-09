@@ -1,7 +1,9 @@
 class ApartmentsController < ApplicationController
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
   def index
+
     @apartments = Apartment.sort
+
   end
 
   def new
@@ -9,8 +11,6 @@ class ApartmentsController < ApplicationController
   end
 
   def show
-    apa = Apartment.first
-    apa.other_method(params)
   end
 
   def create

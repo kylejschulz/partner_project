@@ -3,6 +3,10 @@
 <% end %>
 <h1><%= @apartment.name %>'s Tenants</h1>
 <h3><a href="/"> Return to Welcome page</a></h3>
+<%= form_with url: "/apartments/#{@apartment.id}/tenants", method: :get do |form| %>
+  <%= form.label :sort_alpha, "Sort Apartments Alphabetically" %><br>
+  <%= form.submit 'Sort Apartments Alphabetically' %>
+<% end %>
 
 
 <% @tenants.each do |tenant| %>

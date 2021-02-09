@@ -1,10 +1,7 @@
 class ApartmentsController < ApplicationController
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
   def index
-    # @apartments = Apartment.all
-    @apartments = Apartment.all
-
-
+    @apartments = Apartment.sort
   end
 
   def new
@@ -43,7 +40,7 @@ class ApartmentsController < ApplicationController
     @apartment.update(apartment_params)
 
     @apartment.save
-    redirect_to '/apartments'
+    redirect_to "/apartments/#{@apartment.id}"
   end
 
   def destroy

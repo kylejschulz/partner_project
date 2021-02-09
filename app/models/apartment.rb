@@ -4,18 +4,18 @@ class Apartment < ApplicationRecord
   validates :units, :numericality => { :greater_than_or_equal_to => 0 }
   validates_inclusion_of :luxury, :in => [true, false]
 
-<<<<<<< HEAD
   has_many :tenant, dependent: :destroy
-=======
-  has_many :tenant
 
-  def self.whatever
-    # require "pry"; binding.pry
+  def self.sort
+    all.order(:created_at).reverse
   end
 
-  def other_method(params)
-    params[:id]
-    # require "pry"; binding.pry
+  def member_count
+    member.count
   end
->>>>>>> main
+
+  def sort_alpha
+    # require "pry";binding.pry
+    member.order(:name)
+  end
 end

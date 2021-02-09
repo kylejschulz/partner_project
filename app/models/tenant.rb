@@ -5,4 +5,9 @@ class Tenant < ApplicationRecord
   validates_inclusion_of :on_strike, :in => [true, false]
 
   belongs_to :apartment
+
+  def self.on_strike
+    # require "pry";binding.pry
+    where(on_strike: true)
+  end
 end

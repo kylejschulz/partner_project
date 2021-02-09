@@ -1,8 +1,19 @@
 class LocationMembersController < ApplicationController
   def index
+    # require "pry";binding.pry
     @location = Location.find(params[:id])
-    @members = @location.sort_alpha
+    # @members = @location.sort_alpha
+    # @members = @location.member
+    # ("#{params[:sort_param]} ASC")
+    # require "pry";binding.pry
+    if params[:number_of_people_in_membership].nil?
+      @members = @location.member
+    else
+      @members = @location.sort(params[:number_of_people_in_membership].to_i)
+      # require "pry";binding.pry
+    end
   end
+
 
   def new
     @member = Member.new

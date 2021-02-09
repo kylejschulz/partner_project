@@ -9,6 +9,8 @@ class Member < ApplicationRecord
     # require "pry";binding.pry
     where(monthly_membership: true)
   end
+
+  
 end
 
 # Child Index only shows `true` Records (x2)

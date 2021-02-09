@@ -4,6 +4,9 @@
 <br>
 <% @members.each do |member| %>
   <h2><a href="/members/<%= member.id %>"><%= member.primary_member %></a></h2>
+  <p>Monthly membership? <%= member.monthly_membership %></p>
+  <p># of ppl in membership: <%= member.people_in_membership %></p>
+  <h4><%= member.created_at %></h4>
   <a href="/members/<%= member.id %>/edit">Update Member</a>
   <form action="/members/<%= member.id %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">

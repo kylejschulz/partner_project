@@ -4,6 +4,7 @@
 <br>
 <% @locations.each do |location| %>
   <h2><a href="/locations/<%= location.id %>"><%= location.city %></a></h2>
+  <h4><%= location.created_at %></h4>
   <h5><a href="/locations/<%= location.id %>/edit">Update Location</a></h5>
   <form action="/locations/<%= location.id %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">

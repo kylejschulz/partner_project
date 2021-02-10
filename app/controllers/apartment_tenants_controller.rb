@@ -1,40 +1,42 @@
 class ApartmentTenantsController < ApplicationController
-
+  before_action :set_apartment, only: [:index, :new, :show, :edit, :create, :update, :destroy]
   def index
-    #if params[:commit] == 'Sort Apartments Alphabetically'
-      # @tenants = @apartment.tenant.sort_alpha
-    # end
-    @apartment = Apartment.find(params[:id])
-    @tenants = @apartment.tenant
-    require "pry"; binding.pry
+    if params[:tenant_age].nil?
+      @tenants = @apartment.tenant
+    else
+      @tenants = @apartment.sort(params[:tenant_age])
+    end
+    if params[:sort_param]
+      @tenants = @apartment.sort_alpha
+    end
   end
 
   def new
     @tenant = Tenant.new
-    @apartment = Apartment.find(params[:id])
   end
 
   def create
-    @apartment = Apartment.find(params[:id])
-
     if params[:tenant][:on_strike] == 'on'
       params[:tenant][:on_strike] = true
     else params[:tenant][:on_strike].nil?
       params[:tenant][:on_strike] = false
     end
-    @tenant = Tenant.new({
-      name: params[:tenant][:name],
-      age: params[:tenant][:age],
-      apartment_id: params[:tenant][:apartment_id],
-      on_strike: params[:tenant][:on_strike]
-                    })
+    @tenant = Tenant.new(tenant_params)
     if @tenant.save
       flash[:notice] = "Tenant successfully created"
       redirect_to "/apartments/#{@apartment.id}/tenants"
     else
       render 'new'
     end
+  end
 
+  private
 
+  def tenant_params
+    params.require(:tenant).permit(:name, :age, :apartment_id, :on_strike)
+  end
+
+  def set_apartment
+    @apartment = Apartment.find(params[:id])
   end
 end

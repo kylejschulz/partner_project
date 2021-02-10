@@ -1,8 +1,12 @@
+<p><a href="/apartments"> Apartments listing</a></p>
+<p><a href="/tenants"> Tenant listing page</a></p>
+<p><a href="/apartments/<%= @apartment.id%>/tenants"> <%= @apartment.name%>'s tenants</a></p>
 
-<h1> Apartment name: <%= @apartment.name %> </h1><br>
-<h2>Apartment age: <%= @apartment.years_old %></h2><br>
-<h2>Number of units: <%= @apartment.units %></h2><br>
-<h2>Luxury Apartments: <%= @apartment.luxury %></h2><br>
+<h3> Apartment name: <%= @apartment.name %> </h3>
+<p>Number of tenants: <%= @apartment.tenant.count %></p>
+<p>Apartment age: <%= @apartment.years_old %></p>
+<p>Number of units: <%= @apartment.units %></p>
+<p>Luxury Apartments: <%= @apartment.luxury %></p>
 <br>
 
 
@@ -10,8 +14,6 @@
 
 
 
-<h1><a href="/apartments"> Apartments listing</a></h1>
-<h1><a href="/apartments/<%= @apartment.id%>/tenants"> <%= @apartment.name%>'s tenants</a></h1>
 
 
 <form action="/apartments/<%= @apartment.id %>" method="POST">

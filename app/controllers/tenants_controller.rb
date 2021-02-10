@@ -48,7 +48,7 @@ class TenantsController < ApplicationController
 
     tenant.save
 
-    redirect_to '/tenants'
+    redirect_to "/tenants/#{tenant.id}"
   end
 
   def destroy

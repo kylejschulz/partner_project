@@ -6,7 +6,7 @@ class Apartment < ApplicationRecord
 
   has_many :tenant, dependent: :destroy
 
-  def self.sort
+  def self.sort_recent
     all.order(:created_at).reverse
   end
 
@@ -15,7 +15,10 @@ class Apartment < ApplicationRecord
   end
 
   def sort_alpha
-    # require "pry";binding.pry
-    member.order(:name)
+    tenant.order(:name)
+  end
+
+  def sort(params)
+    tenant.where("age > ?", params)
   end
 end

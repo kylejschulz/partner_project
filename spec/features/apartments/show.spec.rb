@@ -13,6 +13,10 @@ RSpec.describe 'As a visitor' do
       visit "/apartments/#{apartment.id}"
 
       expect(current_path).to eq("/apartments/#{apartment.id}")
+      visit "/apartments/#{apartment_1.id}/tenants"
+
+      expect(page).to have_link("Tenant listing page")
+      expect(page).to have_link("Apartment listing page")
       expect(page).to have_content("Sweet Apartment")
       expect(page).to have_content("11")
       expect(page).to have_content("100")

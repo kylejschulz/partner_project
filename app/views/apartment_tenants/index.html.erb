@@ -1,3 +1,8 @@
+<p><a href="/tenants"> Tenant listing page</a></p>
+<p><a href="/apartments"> Apartment listing page</a></p>
+<p><a href="/apartments/<%= @apartment.id %>/tenants/new">Create tenant</a><p>
+
+
 <% flash.each do |name, msg| %>
   <h2><%= msg %></h2>
 <% end %>
@@ -19,15 +24,14 @@
   <p><a href="/tenants/<%= tenant.id %>"><%= tenant.name %></a></p>
   <p>Age: <%= tenant.age %></p>
   <p>On Strike? <%= tenant.on_strike %></p>
-  <p><a href="/tenants/<%= tenant.id %>/edit">Edit tenant</a></p>
+  <p><a href="/tenants/<%= tenant.id %>/edit">Update Tenant</a></p>
 
   <form action="/tenants/<%= tenant.id %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="delete tenant"/>
+    <input type="submit" value="Delete Tenant"/>
   </form>
   <br>
   <br>
 <% end %>
-
 <p><a href="/apartments/<%= @apartment.id %>/tenants/new">Create tenant</a><p>

@@ -32,16 +32,16 @@ RSpec.describe 'As a visitor' do
 
 
       visit "/tenants"
-      save_and_open_page
 
+      expect(page).to have_link("Update Tenant")
+      expect(page).to have_link("Tenant listing page")
+      expect(page).to have_button("Delete Tenant")
       expect(page).to have_content("Jim Jones")
-      # expect(page).to have_content("22")
-      # expect(page).to have_content("#{apartment_1.id}")
-      # expect(page).to have_content("true")
+      expect(page).to have_content("22")
+      expect(page).to have_content("true")
       expect(page).to have_content("Alpha Blog")
-      # expect(page).to have_content("34")
-      # expect(page).to have_content("#{apartment_2.id}")
-      # expect(page).to have_content("true")
+      expect(page).to have_content("34")
+      expect(page).to have_content("true")
     end
   end
 end

@@ -19,6 +19,10 @@ RSpec.describe 'As a visitor' do
 
       visit "/apartments"
 
+      expect(page).to have_link("Tenant listing page")
+      expect(page).to have_link("Apartment listing page")
+      expect(page).to have_link("Update Apartment")
+      expect(page).to have_button("Delete Apartment")
       expect(page).to have_content("Sweet Apartment")
       expect(page).to have_content("Other Sweet Apartment")
     end

@@ -6,7 +6,7 @@
 <p>Tenant on rent strike: <%= @tenant.on_strike %></p>
 <p>created at: <%= @tenant.created_at %></p>
 <p>updated at: <%= @tenant.updated_at %></p>
-<a href="/tenants/<%= @tenant.id %>/edit">update tenant</a>
+<a href="/tenants/<%= @tenant.id %>/edit">Update Tenant</a>
 <form action="/tenants/<%= @tenant.id %>" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="DELETE">

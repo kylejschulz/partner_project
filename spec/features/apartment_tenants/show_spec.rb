@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'As a visitor' do
-  describe "When I visit '/tenants/:id" do
+  describe "When I visit '/apartments/:id/tenants" do
     it "Then I see the child with that id including the child's attributes:" do
       apartment_1 = Apartment.create!({
         name: "Sweet Apartment",

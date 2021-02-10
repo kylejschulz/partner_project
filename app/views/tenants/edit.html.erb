@@ -1,3 +1,6 @@
+<p><a href="/tenants"> Tenant listing page</a></p>
+<p><a href="/apartments"> Apartment listing page</a></p>
+
 <form action="/tenants/<%= @tenant.id  %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="PATCH" />
@@ -6,7 +9,7 @@
   <input type='number' name='tenant[age]' value="<%= @tenant.age %>"/>Age<br/>
   <input type='number' name='tenant[apartment_id]' value="<%= @tenant.apartment_id %>"/>Apartment building ID<br/>
   <input type='checkbox' name='tenant[on_strike]'>on_strike?</input><br/>
-  <input type='submit' value='update'/>
+  <input type='submit' value='Update Tenant'/>
 </form>
 
 <h1><a href="/tenants"> Cancel and return to tenants</a></h1>

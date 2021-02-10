@@ -1,6 +1,6 @@
 class TenantsController < ApplicationController
   def index
-    @tenants = Tenant.all
+    @tenants = Tenant.on_strike
   end
 
   def new

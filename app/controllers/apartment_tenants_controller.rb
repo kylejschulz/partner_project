@@ -1,8 +1,12 @@
 class ApartmentTenantsController < ApplicationController
 
   def index
+    #if params[:commit] == 'Sort Apartments Alphabetically'
+      # @tenants = @apartment.tenant.sort_alpha
+    # end
     @apartment = Apartment.find(params[:id])
     @tenants = @apartment.tenant
+    require "pry"; binding.pry
   end
 
   def new

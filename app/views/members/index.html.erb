@@ -1,5 +1,5 @@
 <h1>All Members</h1>
-<h5><a href="/locations">Return to All Locations</a></h5>
+<h5><a href="/locations">Return to all locations</a></h5>
 
 <br>
 <% @members.each do |member| %>
@@ -11,7 +11,7 @@
   <form action="/members/<%= member.id %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete member"/><br>
+    <input type="submit" value="Delete Member"/><br>
   </form>
 <% end %>
 

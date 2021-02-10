@@ -1,4 +1,4 @@
-<h5><a href="/locations">Return to All Locations</a></h5>
+<h5><a href="/locations">Return to all locations</a></h5>
 <h5><a href="/members">Return to all members</a></h5>
 
 <form action="/locations/<%= @location.id %>/members" method="post">
@@ -8,7 +8,7 @@
   <input type='checkbox' name='member[monthly_membership]'>Monthly Membership?</input><br>
   <input type='number' name='member[people_in_membership]'>Number of people in membership</input><br>
   <input type='number' name='member[location_id]' value="<%= @location.id %>">Gym they belong to</input><br>
-  <input type='submit'/>
+  <input type='submit' value='Create Member'/>
 </form>
 
 <br>

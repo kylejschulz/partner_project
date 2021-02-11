@@ -30,6 +30,12 @@ RSpec.describe 'As a visitor' do
     end
 
     it 'Page has a form to fill out with a Update Apartment button' do
+      apartment = Apartment.create!({
+        name: "Sweet Apartment",
+        years_old: 11,
+        units: 100,
+        luxury: true
+        })
 
         visit "/apartments/#{apartment.id}"
         click_link "Update Apartment"
@@ -48,6 +54,7 @@ RSpec.describe 'As a visitor' do
       click_link "Update Apartment"
       fill_in "apartment[name]", :with => "Whateva"
       click_button("Update Apartment")
+      save_and_open_page
       expect(current_path).to eq("/apartments/#{apartment.id}")
       expect(page).to have_content("Whateva")
     end

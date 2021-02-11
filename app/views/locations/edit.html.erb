@@ -1,7 +1,7 @@
 <h5><a href="/locations">Return to all locations</a></h5>
 <h5><a href="/members">Return to all members</a></h5>
 
-<form action="/locations/<%= @location.id  %>"  method="post">
+<form action="/locations/<%= @location.id  %>"  method="post" disabled: true>
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="PATCH" />
   <h2>Edit Location Information</h2>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-Rspec.describe 'As a visitor' do
+RSpec.describe 'As a visitor' do
   describe "When I visit '/apartments'" do
     it 'Then I see the name of each parent record in the system' do
       apartment_1 = Apartment.create!({
@@ -17,10 +17,10 @@ Rspec.describe 'As a visitor' do
           luxury: true
           })
 
-      visit "/aparments"
+      visit "/apartments"
 
       expect(page).to have_content("Sweet Apartment")
       expect(page).to have_content("Other Sweet Apartment")
     end
-  end 
+  end
 end

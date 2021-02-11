@@ -68,12 +68,28 @@ RSpec.describe 'members index page', type: :feature do
 
       expect(page).to have_button('Delete Member')
 
+      expect(page).to have_content(@member_1.primary_member)
+      
       click_button 'Delete Member'
 
       expect(current_path).to eq('/members')
       expect(page).to_not have_content(@member_1.primary_member)
     end
 
+    it 'can click on member to view show page' do
+      @location_1 = Location.create(city: 'Salt Lake City',
+                                 square_footage: 40000,
+                                 lead_wall: true)
+      @member_1 = Member.create!(primary_member: 'Bob',
+                               monthly_membership: true,
+                               people_in_membership: 2,
+                               location_id: @location_1.id)
 
+      visit '/members'
+
+      click_on "#{@member_1.primary_member}"
+
+      expect(current_path).to eq("/members/#{@member_1.id}")
+    end
   end
 end

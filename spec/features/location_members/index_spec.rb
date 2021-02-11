@@ -54,7 +54,7 @@ RSpec.describe 'locations members index page', type: :feature do
     expect(page).to have_link('Return to all locations')
 
     fill_in "member[primary_member]", with: "Jane"
-    # fill_in "member[monthly_membership]", with: true
+    check "member[monthly_membership]"
     fill_in "member[people_in_membership]", with: 2
     click_on 'Create Member'
 

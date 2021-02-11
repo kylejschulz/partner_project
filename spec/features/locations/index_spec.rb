@@ -17,7 +17,7 @@ RSpec.describe 'locations index page', type: :feature do
     expect(page).to have_content(location_2.city)
   end
 
-  it 'can create new location' do
+  it 'follow a link to create new location' do
     visit '/locations'
 
     expect(page).to_not have_content("Salt Lake City")
@@ -31,7 +31,7 @@ RSpec.describe 'locations index page', type: :feature do
 
     fill_in "location[city]", with: "Salt Lake City"
     fill_in "location[square_footage]", with: 40000
-    # fill_in "location[lead_wall]", with: true
+    check "location[lead_wall]"
     click_on 'Create Location'
 
     expect(current_path).to eq('/locations')

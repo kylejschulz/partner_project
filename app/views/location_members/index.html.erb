@@ -1,5 +1,5 @@
 <h1><%= @location.city%> Climbing Gym members</h1>
-<h5><a href="/locations">Return to All Locations</a></h5>
+<h5><a href="/locations">Return to all locations</a></h5>
 
 <%= form_with url: "/locations/#{@location.id}/members", method: :get, local: true do |form| %>
   <%= form.label :Only_return_records_with_more_than  %>
@@ -9,6 +9,7 @@
 
 <%= link_to 'alphabetize', "/locations/#{@location.id}/members?sort_param=alphabetize" %>
 
+<br>
 <%= link_to 'clear filter', "/locations/#{@location.id}/members" %>
 
 <% @members.each do |member| %>
@@ -19,14 +20,14 @@
   <form action="/members/<%= member.id %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete member"/><br>
+    <input type="submit" value="Delete Member"/><br>
   </form>
 <% end %>
 
 
 
 <br><br>
-<a href="/locations/<%= @location.id %>/members/new">Create member</a>
+<a href="/locations/<%= @location.id %>/members/new">Create Member</a>
 
 <br>
 <h5><a href="/"> Return to Welcome page</a></h5>

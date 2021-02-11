@@ -24,7 +24,7 @@ RSpec.describe 'locations show page', type: :feature do
       expect(page).to have_content(@location_2.city)
       expect(page).to have_content(@location_2.square_footage)
       expect(page).to have_content(@location_2.lead_wall)
-    end
+    # end
 
     click_link 'New Location'
 

@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'locations show page', type: :feature do
 
 
-<<<<<<< HEAD
     click_link 'New Location'
 
     expect(current_path).to eq('/locations/new')
@@ -31,6 +30,4 @@ RSpec.describe 'locations show page', type: :feature do
     save_and_open_page
     click_button 'Update location'
   end
-=======
->>>>>>> main
 end

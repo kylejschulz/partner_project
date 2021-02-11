@@ -10,8 +10,8 @@ class Apartment < ApplicationRecord
     all.order(:created_at).reverse
   end
 
-  def member_count
-    member.count
+  def tenant_count
+    tenant.count
   end
 
   def sort_alpha

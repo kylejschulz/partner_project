@@ -5,9 +5,14 @@ class LocationMembersController < ApplicationController
       @members = @location.member
     else
       @members = @location.sort(params[:number_of_people_in_membership].to_i)
+<<<<<<< HEAD
+=======
+    end
+    if params[:sort_param]
+      @members = @location.sort_alpha
+>>>>>>> main
     end
   end
-
 
   def new
     @member = Member.new

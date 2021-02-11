@@ -14,15 +14,10 @@ class Location < ApplicationRecord
   end
 
   def sort_alpha
-    # require "pry";binding.pry
     member.order(:primary_member)
   end
 
-  # def order(sql)
-  #   member.order(sql)
-  # end
   def sort(params)
-    # require "pry";binding.pry
     member.where("people_in_membership > ?", params)
   end
 end

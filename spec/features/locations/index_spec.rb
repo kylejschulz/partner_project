@@ -11,29 +11,62 @@ RSpec.describe 'locations index page', type: :feature do
 
     visit '/locations'
 
+    expect(page).to have_link('Return to all members')
+
     expect(page).to have_content(location_1.city)
     expect(page).to have_content(location_2.city)
   end
 
-  it 'see the location with that id including the locations attributes' do
-    @location_1 = Location.create!(city: 'Salt Lake City', square_footage: 40000, lead_wall: true)
-    @location_2 = Location.create!(city: 'Seattle', square_footage: 35000, lead_wall: false)
+  it 'can create new location' do
+    visit '/locations'
 
-    visit "/locations/#{@location_1.id}"
-    expect(page).to have_content(@location_1.city)
-    expect(page).to have_content(@location_1.square_footage)
-    expect(page).to have_content(@location_1.lead_wall)
+    expect(page).to_not have_content("Salt Lake City")
 
-    visit "/locations/#{@location_2.id}"
-    expect(page).to have_content(@location_2.city)
-    expect(page).to have_content(@location_2.square_footage)
-    expect(page).to have_content(@location_2.lead_wall)
+    click_link 'New Location'
+
+    expect(current_path).to eq('/locations/new')
+
+    expect(page).to have_link('Return to all members')
+    expect(page).to have_link('Return to all locations')
+
+    fill_in "location[city]", with: "Salt Lake City"
+    fill_in "location[square_footage]", with: 40000
+    # fill_in "location[lead_wall]", with: true
+    click_on 'Create Location'
+
+    expect(current_path).to eq('/locations')
+    expect(page).to have_content('Salt Lake City')
+  end
+
+  it 'follow a link to update location' do
+    @location_1 = Location.create!(city: 'Salt Lake City',
+                                   square_footage: 40000,
+                                   lead_wall: true)
+
+    visit '/locations'
+
+    expect(page).to have_link('Update Location')
+
+    click_link 'Update Location'
+
+    expect(current_path).to eq("/locations/#{@location_1.id}/edit")
+
+    expect(page).to have_link('Return to all members')
+    expect(page).to have_link('Return to all locations')
+
+    fill_in "location[city]", with: "SLC"
+    click_on 'Update Location'
+
+    expect(current_path).to eq("/locations/#{@location_1.id}")
+    expect(page).to have_content('SLC')
   end
 
   it 'can delete location' do
     @location_1 = Location.create!(city: 'Salt Lake City', square_footage: 40000, lead_wall: true)
 
     visit '/locations'
+
+    expect(page).to have_button('Delete Location')
 
     click_button 'Delete Location'
 

@@ -25,6 +25,7 @@ RSpec.describe 'As a visitor' do
         })
 
         visit "/apartments/#{apartment.id}"
+        expect(page).to have_link("Tenant listing page")
         click_link "Update Apartment"
         expect(current_path).to eq("/apartments/#{apartment.id}/edit")
     end
@@ -51,10 +52,10 @@ RSpec.describe 'As a visitor' do
         })
 
       visit "/apartments/#{apartment.id}"
+
       click_link "Update Apartment"
       fill_in "apartment[name]", :with => "Whateva"
       click_button("Update Apartment")
-      save_and_open_page
       expect(current_path).to eq("/apartments/#{apartment.id}")
       expect(page).to have_content("Whateva")
     end

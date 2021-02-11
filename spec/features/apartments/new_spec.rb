@@ -14,6 +14,8 @@ RSpec.describe 'As a visitor' do
 
 
       expect(current_path).to eq("/apartments")
+      expect(page).to have_link("Tenant listing page")
+      expect(page).to have_link("Apartment listing page")
       expect(page).to have_link("New Apartment")
     end
 
@@ -44,13 +46,9 @@ RSpec.describe 'As a visitor' do
       check "apartment[luxury]"
       click_button("New Apartment")
 
-      save_and_open_page
 
       expect(current_path).to eq("/apartments")
       expect(page).to have_content("Shrewsbury Heights")
-      # expect(page).to have_content("6")
-      # expect(page).to have_content("54")
-      # expect(page).to have_content("true")
     end
   end
 end

@@ -11,9 +11,10 @@ RSpec.describe 'As a visitor' do
         })
 
         visit "/apartments/#{apartment.id}"
-        save_and_open_page
 
       expect(current_path).to eq("/apartments/#{apartment.id}")
+      expect(page).to have_link("Tenant listing page")
+      expect(page).to have_link("Apartment listing page")
       expect(page).to have_button("Delete Apartment")
     end
 
@@ -27,7 +28,6 @@ RSpec.describe 'As a visitor' do
 
         visit "/apartments/#{apartment.id}"
         click_button "Delete Apartment"
-        # response.should be_redirect (:action => 'index')
         expect(current_path).to eq("/apartments")
         expect(page).to have_no_content("Deleted Apartment")
     end

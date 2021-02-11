@@ -1,26 +1,37 @@
+<p><a href="/tenants"> Tenant listing page</a></p>
+<p><a href="/apartments"> Apartment listing page</a></p>
+<p><a href="/apartments/<%= @apartment.id %>/tenants/new">Create tenant</a><p>
+
+
 <% flash.each do |name, msg| %>
   <h2><%= msg %></h2>
 <% end %>
-<h1><%= @apartment.name %>'s Tenants</h1>
-<h3><a href="/"> Return to Welcome page</a></h3>
-<%= form_with url: "/apartments/#{@apartment.id}/tenants", method: :get do |form| %>
-  <%= form.label :sort_alpha, "Sort Apartments Alphabetically" %><br>
-  <%= form.submit 'Sort Apartments Alphabetically' %>
+<p><a href="/"> Return to Welcome page</a></p>
+
+<%= form_with url: "/apartments/#{@apartment.id}/tenants", method: :get, local: true do |form| %>
+  <%= form.label :Only_return_records_of_tenants_older_than  %>
+  <%= form.number_field :tenant_age %>
+  <%= form.submit 'Submit' %>
 <% end %>
 
+<%= link_to 'alphabetize', "/apartments/#{@apartment.id}/tenants?sort_param=alphabetize" %>
+
+<%= link_to 'clear filter', "/apartments/#{@apartment.id}/tenants" %>
+
+<h3><%= @apartment.name %>'s Tenants</h3>
 
 <% @tenants.each do |tenant| %>
-  <h3><a href="/tenants/<%= tenant.id %>"><%= tenant.name %></a></h3>
+  <p><a href="/tenants/<%= tenant.id %>"><%= tenant.name %></a></p>
   <p>Age: <%= tenant.age %></p>
-  <h5><a href="/tenants/<%= tenant.id %>/edit">Edit tenant</a></h5>
+  <p>On Strike? <%= tenant.on_strike %></p>
+  <p><a href="/tenants/<%= tenant.id %>/edit">Update Tenant</a></p>
 
   <form action="/tenants/<%= tenant.id %>" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="delete tenant"/>
+    <input type="submit" value="Delete Tenant"/>
   </form>
   <br>
   <br>
 <% end %>
-
-<h3><a href="/apartments/<%= @apartment.id %>/tenants/new">Create tenant</a></h3>
+<p><a href="/apartments/<%= @apartment.id %>/tenants/new">Create new tenant</a><p>

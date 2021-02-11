@@ -1,16 +1,18 @@
 <h1>Apartments</h1>
 <h3><a href="/"> Return to Welcome page</a></h3>
+<p><a href="/tenants"> Tenant listing page</a></p>
+<p><a href="/apartments"> Apartment listing page</a></p>
 <h2><a href='/apartments/new'>New Apartment</a></h2>
 <br>
 
 
 
 <% @apartments.each do |apartment| %>
-  <h3><a href="/apartments/<%= apartment.id %>"><%= apartment.name %></a></h3> <h6><a href="/apartments/<%= apartment.id %>/edit">Edit</h6>
+  <p><a href="/apartments/<%= apartment.id %>"><%= apartment.name %></a></p> <p><a href="/apartments/<%= apartment.id %>/edit">Update Apartment</p>
     <form action="/apartments/<%= apartment.id %>" method="POST">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="delete"/>
+      <input type="submit" value="Delete Apartment"/>
     </form>
   <br>
 <% end %>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Location, type: :model do
+RSpec.describe Location, type: :model do
   describe 'relationships' do
     it {should have_many :member}
   end
@@ -8,7 +8,7 @@ describe Location, type: :model do
   describe 'attributes' do
     it {should validate_presence_of :city}
     it {should validate_presence_of :square_footage}
-    # it {should validate_presence_of :lead_wall}
+    it {should validate_inclusion_of :lead_wall}
   end
 
   describe 'class method' do
